@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间 namespace 全球唯一 包 -->
+<mapper namespace="com.bw.mapper.Carmapper">
+	<select id="seAll" resultType="com.bw.bean.Car">
+	SELECT * FROM car
+	<where>
+	<if test="cname!=null and cname!=''">
+	cname like "%${cname}%"
+	</if>
+	<if test="ctname!=null and ctname!=''">
+	  and ctname like "%${ctname}%"
+	</if>
+	<if test="cmsh!=null and cmsh!=''">
+	 and  cmsh like "%${cmsh}%"
+	</if>
+	<if test="cid!=null and cid!=''">
+	  and cid like "%${cid}%"
+	</if>
+	<if test="czc!=null and czc!=''">
+	  and czc like "%${czc}%"
+	</if>
+	<if test="cdz!=null and cdz!=''">
+	  and cdz like "%${cdz}%"
+	</if>
+	<if test="czt!=null and czt!=''">
+	  and czt like "%${czt}%"
+	</if>
+	</where>
+	</select>
+	
+	<select id="sefind" resultType="com.bw.bean.Car" parameterType="int">
+	SELECT * FROM car
+	<where>
+	cid=#{cid};
+	</where>
+	</select>
+</mapper>
